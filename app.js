@@ -1,5 +1,6 @@
 // import
 import { Ball } from "./ball.js";
+import { Block } from "./block.js";
 
 // App이란 객체를 정의. (표현식)
 class App {
@@ -20,6 +21,7 @@ class App {
     this.resize();
 
     this.ball = new Ball(this.stageWidth, this.stageHeight, 60, 15);
+    this.block = new Block(700, 30, 300, 450);
 
     // 애니메이션 함수. (setinterval 보다 높은 프레임을 커버 가능하다.)
     window.requestAnimationFrame(this.animate.bind(this));
@@ -45,7 +47,8 @@ class App {
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
     // draw 함수 호출.
-    this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
+    this.block.draw(this.ctx);
+    this.ball.draw(this.ctx, this.stageWidth, this.stageHeight, this.block);
   }
 }
 
